@@ -53,7 +53,17 @@ jobs:
           destination_repo: "git@github.com:Hvftk/snyc-Sunert-Scripts.git"
           destination_branch: "main"
           ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}	  #GITHUB的id_rsa
-
+          
+      - name: sync form lxk0301/jd_Scripts
+        uses: wei/git-sync@v2
+        if: env.ssh_private_key
+        with:
+          source_repo: "https://github.com/lxk0301/jd_scripts.git"
+          source_branch: "master"
+          destination_repo: "git@github.com:Hvftk/jd_scripts.git"
+          destination_branch: "master"
+          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}	  #GITHUB的id_rsa          
+          
 # 同步几个仓库到自己仓库    同步几个仓库到自己仓库
 
 
