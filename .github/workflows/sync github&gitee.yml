@@ -73,7 +73,7 @@ jobs:
           destination_branch: "xmly_speed"
           ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}	  #GITHUB的id_rsa
 
-      - name: sync form MyActions
+      - name: sync form sazs34
         uses: wei/git-sync@v2
         if: env.ssh_private_key
         with:
