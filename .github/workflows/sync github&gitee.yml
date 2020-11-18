@@ -11,7 +11,7 @@ on:
   repository_dispatch:
     types: sync-github&gitee
 jobs:
-  sync-github&gitee:
+  sync-github-gitee:
     env:
       PAT: ${{ secrets.PAT }} #此处PAT需要申请，教程详见：https://www.jianshu.com/p/bb82b3ad1d11
       dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}  ##GITEE的id_rsa
