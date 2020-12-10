@@ -1,0 +1,29 @@
+name: Update China IP list and generate GeoIP2 database
+
+on:
+  push:
+    branches: [ master ]
+  
+  workflow_dispatch:
+
+  schedule: 
+    - cron:  '0 2 */3 * *'
+
+jobs:
+  build:
+    name: Generate GeoIP2 database
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Set up Go 1.x
+      uses: actions/setup-go@v2
+      with:
+        go-version: ^1.14
+      id: go
+
+    - name: Check out code into the Go module directory
+      uses: actions/checkout@v2
+
+
+    - name: Purge CDN Cache
+      run: curl https://purge.jsdelivr.net/gh/Hackl0us/GeoIP-CN@master/artifacts/geoip-cn.txt
