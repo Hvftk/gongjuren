@@ -82,17 +82,7 @@ jobs:
           destination_repo: ${{ secrets.SSH_URL }} #secrets填写 git@github.com:name/repo.git 格式。
           destination_branch: "xmly_speed"
           ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}	  #GITHUB的id_rsa
-          
-          
-      - name: sync form ziye12
-        uses: wei/git-sync@v2
-        if: env.ssh_private_key
-        with:
-          source_repo: "https://github.com/ziye12/JavaScript.git"
-          source_branch: "master"
-          destination_repo: ${{ secrets.SSH_URL }} #secrets填写 git@github.com:name/repo.git 格式。
-          destination_branch: "ziye12"
-          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}	  #GITHUB的id_rsa          
+              
 
 
       - name: sync form sazs34
