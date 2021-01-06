@@ -198,6 +198,8 @@ jobs:
           static_list: ${{ secrets.REPO_NAME }}        #SOURCE_REPO填写 仓库名字
           dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}    #GITEE的id_rsa
           dst_token: ${{ secrets.GITEE_TOKEN }}        #GITEE的私人令牌
+          force_update: true
+          #debug: true
 
 # 备份到gitee  备份到gitee  备份到gitee
 
