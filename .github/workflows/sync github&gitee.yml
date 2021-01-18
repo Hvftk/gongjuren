@@ -45,7 +45,7 @@ jobs:
           destination_branch: "main"
           ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}	  #GITHUB的id_rsa
           
-      - name: sync form lxk0301/jd_Scripts
+      - name: sync form LXK9301/jd_Scripts
         uses: wei/git-sync@v2
         if: env.ssh_private_key
         with:
@@ -104,7 +104,7 @@ jobs:
           destination_branch: "DivineEngine"
           ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}	  #GITHUB的id_rsa	
 
-      - name: sync form lxk0301
+      - name: sync form LXK9301
         uses: wei/git-sync@v2
         if: env.ssh_private_key
         with:
