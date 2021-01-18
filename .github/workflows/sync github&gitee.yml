@@ -1,25 +1,3 @@
-/*
-      - name: sync form DivineEngine
-        uses: wei/git-sync@v2
-        if: env.ssh_private_key
-        with:
-          source_repo: "https://github.com/DivineEngine/Profiles.git"
-          source_branch: "master"
-          destination_repo: ${{ secrets.SSH_URL }}  #secrets填写 git@github.com:name/repo.git 格式。
-          destination_branch: "DivineEngine"
-          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}	  #GITHUB的id_rsa	
-
-      - name: sync form LXK9301
-        uses: wei/git-sync@v2
-        if: env.ssh_private_key
-        with:
-          source_repo: "https://github.com/LXK9301/jd_scripts.git"
-          source_branch: "master"
-          destination_repo: ${{ secrets.SSH_URL }}  #secrets填写 git@github.com:name/repo.git 格式。
-          destination_branch: "LXK9301"
-          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}	  #GITHUB的id_rsa	
-
-*/
 name: sync github&gitee
 on:
   schedule:
@@ -153,33 +131,13 @@ jobs:
 
 
 # 备份几个仓库到私库    备份几个仓库到私库    备份几个仓库到私库
-      - name: sync form private repo
-        uses: wei/git-sync@v2
-        if: env.ssh_private_key
-        with:
-          source_repo: ${{ secrets.RRIVATE_REPO1 }}   #格式"https://github.com/lxk0301/jd_scripts.git"
-          source_branch: "main"
-          destination_repo: ${{ secrets.SSH_URL1 }}    #secrets填写 git@github.com:name/repo.git 格式。
-          destination_branch: "main"
-          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY1 }}	  #GITHUB的id_rsa	
-
       - name: sync form private repo1
         uses: wei/git-sync@v2
         if: env.ssh_private_key
         with:
-          source_repo: ${{ secrets.RRIVATE_REPO1 }}   #格式"https://github.com/lxk0301/jd_scripts.git"
-          source_branch: "main"
-          destination_repo: ${{ secrets.SSH_URL2 }}    #secrets填写 git@github.com:name/repo.git 格式。
-          destination_branch: "main"
-          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY1 }}	  #GITHUB的id_rsa	
-
-      - name: sync form private repo2
-        uses: wei/git-sync@v2
-        if: env.ssh_private_key
-        with:
-          source_repo: ${{ secrets.RRIVATE_REPO2 }}   #格式"https://github.com/lxk0301/jd_scripts.git"
+          source_repo: ${{ secrets.RRIVATE_REPO1}}   #格式"https://github.com/lxk0301/jd_scripts.git"
           source_branch: "master"
-          destination_repo: ${{ secrets.SSH_URL2 }}    #secrets填写 git@github.com:name/repo.git 格式。
+          destination_repo: ${{ secrets.SSH_URL1 }}    #secrets填写 git@github.com:name/repo.git 格式。
           destination_branch: "master"
           ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY1 }}	  #GITHUB的id_rsa	          
           
