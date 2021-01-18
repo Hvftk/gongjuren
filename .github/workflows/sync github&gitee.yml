@@ -1,4 +1,25 @@
+/*
+      - name: sync form DivineEngine
+        uses: wei/git-sync@v2
+        if: env.ssh_private_key
+        with:
+          source_repo: "https://github.com/DivineEngine/Profiles.git"
+          source_branch: "master"
+          destination_repo: ${{ secrets.SSH_URL }}  #secrets填写 git@github.com:name/repo.git 格式。
+          destination_branch: "DivineEngine"
+          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}	  #GITHUB的id_rsa	
 
+      - name: sync form LXK9301
+        uses: wei/git-sync@v2
+        if: env.ssh_private_key
+        with:
+          source_repo: "https://github.com/LXK9301/jd_scripts.git"
+          source_branch: "master"
+          destination_repo: ${{ secrets.SSH_URL }}  #secrets填写 git@github.com:name/repo.git 格式。
+          destination_branch: "LXK9301"
+          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}	  #GITHUB的id_rsa	
+
+*/
 name: sync github&gitee
 on:
   schedule:
