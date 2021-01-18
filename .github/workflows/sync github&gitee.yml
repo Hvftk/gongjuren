@@ -34,15 +34,6 @@ jobs:
           destination_branch: "main"
           ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}	  #GITHUB的id_rsa
 
-      - name: sync form sazs34/MyActions
-        uses: wei/git-sync@v2
-        if: env.ssh_private_key
-        with:
-          source_repo: "https://github.com/sazs34/MyActions.git"
-          source_branch: "master"
-          destination_repo: "git@github.com:Hvftk/sync-sazs34-MyActions.git"
-          destination_branch: "main"
-          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}	  #GITHUB的id_rsa
 
       - name: sync form Sunert/Scripts
         uses: wei/git-sync@v2
@@ -58,7 +49,7 @@ jobs:
         uses: wei/git-sync@v2
         if: env.ssh_private_key
         with:
-          source_repo: "https://github.com/lxk0301/jd_scripts.git"
+          source_repo: "https://github.com/LXK9301/jd_scripts.git"
           source_branch: "master"
           destination_repo: "git@github.com:Hvftk/jd_scripts.git"
           destination_branch: "master"
@@ -81,16 +72,6 @@ jobs:
           source_branch: "master"
           destination_repo: ${{ secrets.SSH_URL }} #secrets填写 git@github.com:name/repo.git 格式。
           destination_branch: "xmly_speed"
-          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}	  #GITHUB的id_rsa
-
-      - name: sync form sazs34
-        uses: wei/git-sync@v2
-        if: env.ssh_private_key
-        with:
-          source_repo: "https://github.com/sazs34/MyActions.git"
-          source_branch: "master"
-          destination_repo: ${{ secrets.SSH_URL }} #secrets填写 git@github.com:name/repo.git 格式。
-          destination_branch: "sazs34"
           ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}	  #GITHUB的id_rsa
 
       - name: sync form Sunert
@@ -127,10 +108,10 @@ jobs:
         uses: wei/git-sync@v2
         if: env.ssh_private_key
         with:
-          source_repo: "https://github.com/lxk0301/jd_scripts.git"
+          source_repo: "https://github.com/LXK9301/jd_scripts.git"
           source_branch: "master"
           destination_repo: ${{ secrets.SSH_URL }}  #secrets填写 git@github.com:name/repo.git 格式。
-          destination_branch: "lxk0301"
+          destination_branch: "LXK9301"
           ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}	  #GITHUB的id_rsa	
           
       - name: sync form NobyDa
