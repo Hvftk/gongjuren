@@ -1,0 +1,164 @@
+name: sync github&gitee1
+on:
+  schedule:
+    - cron: '*/20 * * * *'
+  workflow_dispatch:
+  watch:
+    types: started
+  push:
+    branches: [ main ]
+  repository_dispatch:
+    types: sync-github&gitee
+jobs:
+  sync-github-gitee:
+    env:
+      PAT: ${{ secrets.PAT }} #此处PAT需要申请，教程详见：https://www.jianshu.com/p/bb82b3ad1d11
+      dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}  ##GITEE的id_rsa
+      ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}	  #GITHUB的id_rsa
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+    
+
+# 同步几个仓库到自己仓库    同步几个仓库到自己仓库
+      - name: sync form Zero-S1/xmly_speed
+        uses: wei/git-sync@v2
+        if: env.ssh_private_key
+        with:
+          source_repo: "https://github.com/Zero-S1/xmly_speed.git"
+          source_branch: "master"
+          destination_repo: "git@github.com:Hvftk/sync-Zero-S1-xmly_speed.git"
+          destination_branch: "main"
+          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}	  #GITHUB的id_rsa
+
+
+      - name: sync form Sunert/Scripts
+        uses: wei/git-sync@v2
+        if: env.ssh_private_key
+        with:
+          source_repo: "https://github.com/Sunert/Scripts.git"
+          source_branch: "master"
+          destination_repo: "git@github.com:Hvftk/Sunert.git"
+          destination_branch: "main"
+          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}	  #GITHUB的id_rsa
+
+# 同步几个仓库到自己仓库    同步几个仓库到自己仓库
+
+
+
+
+
+# 备份几个仓库    备份几个仓库    备份几个仓库
+
+
+      - name: sync form xmly_speed
+        uses: wei/git-sync@v2
+        if: env.ssh_private_key
+        with:
+          source_repo: "https://github.com/Zero-S1/xmly_speed.git"
+          source_branch: "master"
+          destination_repo: ${{ secrets.SSH_URL }} #secrets填写 git@github.com:name/repo.git 格式。
+          destination_branch: "xmly_speed"
+          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}	  #GITHUB的id_rsa
+
+      - name: sync form Sunert
+        uses: wei/git-sync@v2
+        if: env.ssh_private_key
+        with:
+          source_repo: "https://github.com/Sunert/Scripts.git"
+          source_branch: "master"
+          destination_repo: ${{ secrets.SSH_URL }} #secrets填写 git@github.com:name/repo.git 格式。
+          destination_branch: "Sunert"
+          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}	  #GITHUB的id_rsa
+
+      - name: sync form chavyleung
+        uses: wei/git-sync@v2
+        if: env.ssh_private_key
+        with:
+          source_repo: "https://github.com/chavyleung/scripts.git"
+          source_branch: "master"
+          destination_repo: ${{ secrets.SSH_URL }} #secrets填写 git@github.com:name/repo.git 格式。
+          destination_branch: "chavyleung"
+          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}	  #GITHUB的id_rsa		  
+
+      - name: sync form DivineEngine
+        uses: wei/git-sync@v2
+        if: env.ssh_private_key
+        with:
+          source_repo: "https://github.com/DivineEngine/Profiles.git"
+          source_branch: "master"
+          destination_repo: ${{ secrets.SSH_URL }}  #secrets填写 git@github.com:name/repo.git 格式。
+          destination_branch: "DivineEngine"
+          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}	  #GITHUB的id_rsa	
+
+      - name: sync form shylocks
+        uses: wei/git-sync@v2
+        if: env.ssh_private_key
+        with:
+          source_repo: "https://github.com/vhzn/Loon.git"
+          source_branch: "main"
+          destination_repo: ${{ secrets.SSH_URL }}  #secrets填写 git@github.com:name/repo.git 格式。
+          destination_branch: "shylocks"
+          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}	  #GITHUB的id_rsa	
+          
+      - name: sync form NobyDa
+        uses: wei/git-sync@v2
+        if: env.ssh_private_key
+        with:
+          source_repo: "https://github.com/NobyDa/Script.git"
+          source_branch: "master"
+          destination_repo: ${{ secrets.SSH_URL }}  #secrets填写 git@github.com:name/repo.git 格式。
+          destination_branch: "NobyDa"
+          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}	  #GITHUB的id_rsa	          
+
+# 备份几个仓库    备份几个仓库    备份几个仓库
+
+
+
+
+
+
+# 备份几个仓库到私库    备份几个仓库到私库    备份几个仓库到私库
+      - name: sync form private repo1
+        uses: wei/git-sync@v2
+        if: env.ssh_private_key
+        with:
+          source_repo: ${{ secrets.RRIVATE_REPO1}}   #格式"https://github.com/lxk0301/jd_scripts.git"
+          source_branch: "master"
+          destination_repo: ${{ secrets.SSH_URL1 }}    #secrets填写 git@github.com:name/repo.git 格式。
+          destination_branch: "master"
+          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY1 }}	  #GITHUB的id_rsa	          
+          
+
+# 备份几个仓库到私库    备份几个仓库到私库    备份几个仓库到私库
+
+
+
+
+# 备份到gitee  备份到gitee  备份到gitee
+
+      - name: push github -> gitee
+        uses: Yikun/hub-mirror-action@master
+        if: env.dst_key
+        with:
+          src: ${{ secrets.SOURCE_REPO }}  #SOURCE_REPO填写格式 github/repo
+          dst: ${{ secrets.GITEE_NAME }}   #GITEE_NAME 填写格式 gitee/repo
+          static_list: ${{ secrets.REPO_NAME }}        #SOURCE_REPO填写 仓库名字
+          dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}    #GITEE的id_rsa
+          dst_token: ${{ secrets.GITEE_TOKEN }}        #GITEE的私人令牌
+          force_update: true
+          #debug: true
+
+# 备份到gitee  备份到gitee  备份到gitee
+
+# 暂时不用，仅做拉取别人仓库的示例
+      - name: sync form another github
+        uses: repo-sync/github-sync@v2
+        if: env.PAT
+        with:
+          source_repo: "https://github.com/name/repo.git"
+          source_branch: "master"
+          destination_branch: "master"
+          github_token: ${{ secrets.PAT }}   #此处PAT需要申请，教程详见：https://www.jianshu.com/p/bb82b3ad1d11
