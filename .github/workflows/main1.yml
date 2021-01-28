@@ -22,76 +22,6 @@ jobs:
           persist-credentials: false
     
 
-# 同步几个仓库到自己仓库    同步几个仓库到自己仓库
-      - name: sync form Zero-S1/xmly_speed
-        uses: wei/git-sync@v2
-        if: env.ssh_private_key
-        with:
-          source_repo: "https://github.com/Zero-S1/xmly_speed.git"
-          source_branch: "master"
-          destination_repo: "git@github.com:Hvftk/sync-Zero-S1-xmly_speed.git"
-          destination_branch: "main"
-          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}	  #GITHUB的id_rsa
-
-
-      - name: sync form Sunert/Scripts
-        uses: wei/git-sync@v2
-        if: env.ssh_private_key
-        with:
-          source_repo: "https://github.com/Sunert/Scripts.git"
-          source_branch: "master"
-          destination_repo: "git@github.com:Hvftk/Sunert.git"
-          destination_branch: "main"
-          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}	  #GITHUB的id_rsa
-
-# 同步几个仓库到自己仓库    同步几个仓库到自己仓库
-
-
-
-
-
-# 备份几个仓库    备份几个仓库    备份几个仓库
-
-
-      - name: sync form xmly_speed
-        uses: wei/git-sync@v2
-        if: env.ssh_private_key
-        with:
-          source_repo: "https://github.com/Zero-S1/xmly_speed.git"
-          source_branch: "master"
-          destination_repo: ${{ secrets.SSH_URL }} #secrets填写 git@github.com:name/repo.git 格式。
-          destination_branch: "xmly_speed"
-          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}	  #GITHUB的id_rsa
-
-      - name: sync form Sunert
-        uses: wei/git-sync@v2
-        if: env.ssh_private_key
-        with:
-          source_repo: "https://github.com/Sunert/Scripts.git"
-          source_branch: "master"
-          destination_repo: ${{ secrets.SSH_URL }} #secrets填写 git@github.com:name/repo.git 格式。
-          destination_branch: "Sunert"
-          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}	  #GITHUB的id_rsa
-
-      - name: sync form chavyleung
-        uses: wei/git-sync@v2
-        if: env.ssh_private_key
-        with:
-          source_repo: "https://github.com/chavyleung/scripts.git"
-          source_branch: "master"
-          destination_repo: ${{ secrets.SSH_URL }} #secrets填写 git@github.com:name/repo.git 格式。
-          destination_branch: "chavyleung"
-          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}	  #GITHUB的id_rsa		  
-
-      - name: sync form DivineEngine
-        uses: wei/git-sync@v2
-        if: env.ssh_private_key
-        with:
-          source_repo: "https://github.com/DivineEngine/Profiles.git"
-          source_branch: "master"
-          destination_repo: ${{ secrets.SSH_URL }}  #secrets填写 git@github.com:name/repo.git 格式。
-          destination_branch: "DivineEngine"
-          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}	  #GITHUB的id_rsa	
 
       - name: sync form shylocks
         uses: wei/git-sync@v2
@@ -103,15 +33,6 @@ jobs:
           destination_branch: "shylocks"
           ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}	  #GITHUB的id_rsa	
           
-      - name: sync form NobyDa
-        uses: wei/git-sync@v2
-        if: env.ssh_private_key
-        with:
-          source_repo: "https://github.com/NobyDa/Script.git"
-          source_branch: "master"
-          destination_repo: ${{ secrets.SSH_URL }}  #secrets填写 git@github.com:name/repo.git 格式。
-          destination_branch: "NobyDa"
-          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}	  #GITHUB的id_rsa	          
 
 # 备份几个仓库    备份几个仓库    备份几个仓库
 
